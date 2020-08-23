@@ -1,0 +1,27 @@
+package com.example.demo.controller;
+
+import java.util.List;
+
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.dao.DlngDAO;
+import com.example.demo.dto.DlngDTO;
+
+@RestController
+//@MapperScan(basePackages="com.example.demo.dao")//탐색할 패키시 설정
+public class DlngController {
+	@Autowired
+	private DlngDAO dlngDAO;
+	
+	@RequestMapping("/dlngs")
+	public List<DlngDTO> dlngs(@RequestParam(value="dlngNo", defaultValue = "")String dlngNo) throws Exception { 
+		final DlngDTO param = new DlngDTO(dlngNo, null, null);
+		final List<DlngDTO> userList = dlngDAO.selectDlngs(param);
+		return userList;
+	}
+	
+}

@@ -1,0 +1,24 @@
+package com.example.demo.dao;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.dto.UserDTO;
+
+@Repository("UserDAO")
+public class UserDAO {
+	
+	@Autowired
+
+    private SqlSessionTemplate sqlSessionTemplate;
+
+   
+
+    public List<TestDto> selectList(){
+
+           return sqlSessionTemplate.selectList("com.example.demo.TestDao.selectList");
+
+    };
+
+}

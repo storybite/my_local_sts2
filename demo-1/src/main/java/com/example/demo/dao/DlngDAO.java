@@ -1,0 +1,22 @@
+package com.example.demo.dao;
+
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.dto.DlngDTO;
+
+@Repository("DlngDAO")
+public class DlngDAO {
+	
+	@Autowired
+	private SqlSessionTemplate sqlSessionTemplate;
+
+	public List<DlngDTO> selectDlngs(DlngDTO dlngDto) {
+		System.out.println("dlngDto....>>> : " + dlngDto);
+		return sqlSessionTemplate.selectList("com.example.demo.dao.DlngDAO.selectDlngs", dlngDto);
+    }
+
+}

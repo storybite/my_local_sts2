@@ -1,0 +1,11 @@
+package com.example.demo.dao;
+
+import java.util.List;
+
+import com.example.demo.dto.UserDTO;
+
+public interface UserDAO2_bkup {
+	
+	List<UserDTO> selectUsers(UserDTO param) throws Exception;
+
+}
